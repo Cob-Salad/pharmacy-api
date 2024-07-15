@@ -28,7 +28,7 @@ async def create_patient(newpatient: Patient) -> None:
     patients.append(newpatient)
 
 
-@app.put("/patients")
+@app.put("/patients{first_name}")
 async def update_patient(updatedpatient: Patient, first_name: str) -> None:
     for i, patient in enumerate(patients):
         if patient.first_name == first_name:
@@ -38,7 +38,7 @@ async def update_patient(updatedpatient: Patient, first_name: str) -> None:
             patients.append(updatedpatient)
             return
 
-@app.delete("/patients")
+@app.delete("/patients{first_name}")
 async def delete_patient(first_name: str):
     for i, patient in enumerate(patients):
         if patient.first_name == first_name:
